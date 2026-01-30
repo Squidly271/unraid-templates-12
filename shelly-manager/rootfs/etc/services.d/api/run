@@ -1,0 +1,14 @@
+#!/usr/bin/with-contenv bash
+
+cd /app
+
+export PATH="/app/.venv/bin:$PATH"
+export PYTHONDONTWRITEBYTECODE=1
+export PYTHONUNBUFFERED=1
+
+LOG_LEVEL="${LOG_LEVEL:-info}"
+
+exec s6-setuidgid abc /app/.venv/bin/uvicorn api.main:app \
+    --host 0.0.0.0 \
+    --port 8000 \
+    --log-level "${LOG_LEVEL}"

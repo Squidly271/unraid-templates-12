@@ -1,0 +1,8 @@
+#!/usr/bin/with-contenv bash
+
+# Create config directory
+mkdir -p /config
+chown abc:abc /config
+
+# Create nginx run directory
+mkdir -p /run/nginx

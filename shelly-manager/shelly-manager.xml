@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<Container version="2">
+    <Name>shelly-manager</Name>
+    <Repository>ghcr.io/jfmlima/shelly-manager:latest</Repository>
+    <Registry>https://github.com/jfmlima/unraid-templates/pkgs/container/shelly-manager</Registry>
+    <Network>bridge</Network>
+    <Privileged>false</Privileged>
+    <Support>https://github.com/jfmlima/shelly-manager/issues</Support>
+    <Project>https://github.com/jfmlima/shelly-manager</Project>
+    <Overview>Shelly Manager - Local management for Shelly IoT devices without cloud connectivity. Includes device discovery, firmware updates, bulk operations, and a modern web UI.</Overview>
+    <Category>HomeAutomation: Tools:</Category>
+    <WebUI>http://[IP]:[PORT:8080]/</WebUI>
+    <Icon>https://raw.githubusercontent.com/jfmlima/unraid-templates/main/shelly-manager/icon.png</Icon>
+    <ExtraParams>--restart unless-stopped</ExtraParams>
+    <Networking>
+        <Mode>bridge</Mode>
+        <Publish>
+            <Port>
+                <HostPort>8080</HostPort>
+                <ContainerPort>8080</ContainerPort>
+                <Protocol>tcp</Protocol>
+            </Port>
+        </Publish>
+    </Networking>
+    <Data>
+        <Volume>
+            <HostDir>/mnt/user/appdata/shelly-manager</HostDir>
+            <ContainerDir>/config</ContainerDir>
+            <Mode>rw</Mode>
+        </Volume>
+    </Data>
+    <Environment>
+        <Variable>
+            <Value>1000</Value>
+            <Name>PUID</Name>
+        </Variable>
+        <Variable>
+            <Value>1000</Value>
+            <Name>PGID</Name>
+        </Variable>
+    </Environment>
+    <Config Name="WebUI Port" Target="8080" Default="8080" Mode="tcp"
+            Description="Web interface and API port"
+            Type="Port" Display="always" Required="true" Mask="false"/>
+    <Config Name="Config Path" Target="/config" Default="/mnt/user/appdata/shelly-manager"
+            Mode="rw" Description="Path for persistent data (database)"
+            Type="Path" Display="always" Required="true" Mask="false"/>
+    <Config Name="Secret Key" Target="SHELLY_SECRET_KEY" Default=""
+            Description="Encryption key for stored credentials. Generate with: python3 -c 'from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())'"
+            Type="Variable" Display="always" Required="false" Mask="true"/>
+    <Config Name="Log Level" Target="LOG_LEVEL" Default="info"
+            Description="Logging verbosity (debug, info, warning, error)"
+            Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="PUID" Target="PUID" Default="1000"
+            Description="User ID for file permissions"
+            Type="Variable" Display="advanced" Required="false" Mask="false"/>
+    <Config Name="PGID" Target="PGID" Default="1000"
+            Description="Group ID for file permissions"
+            Type="Variable" Display="advanced" Required="false" Mask="false"/>
+</Container>
