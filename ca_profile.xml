@@ -1,9 +1,7 @@
 <?xml version="1.0"?>
-<Repositories>
     <Profile>
         <Name>jfmlima</Name>
         <Icon>https://raw.githubusercontent.com/jfmlima/unraid-templates/main/shelly-manager/icon.png</Icon>
         <Description>Docker container templates for Unraid Community Applications.</Description>
         <Website>https://github.com/jfmlima/unraid-templates</Website>
     </Profile>
-</Repositories>
