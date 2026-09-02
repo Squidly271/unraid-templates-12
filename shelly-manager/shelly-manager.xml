@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
     <Name>shelly-manager</Name>
-    <Repository>ghcr.io/jfmlima/shelly-manager:latest</Repository>
+    <Repository>ghcr.io/jfmlima/shelly-manag11er:latest</Repository>
     <Registry>https://github.com/jfmlima/unraid-templates/pkgs/container/shelly-manager</Registry>
     <Network>bridge</Network>
     <Privileged>false</Privileged>
